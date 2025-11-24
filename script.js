@@ -1,5 +1,13 @@
 const data = {
-  personal: { name: "Jean Decian" },
+  personal: {
+    name: "Jean Decian",
+    title:
+      "Analyste en sécurité de l'information | Étudiant à la maîtrise en informatique",
+    email: "jeandecian@hotmail.fr",
+    linkedin: "jeandecian",
+    github: "jeandecian",
+    address: "Montréal, Canada",
+  },
   certifications: [
     {
       name: "Practical Network Penetration Tester (PNPT)",
@@ -160,7 +168,49 @@ function renderResumeCV() {
     "text-4xl font-extrabold text-blue-800 tracking-tighter",
     data.personal.name
   );
+  const titleEl = createElement(
+    "h2",
+    "text-xl font-light text-gray-700 mt-1",
+    data.personal.title
+  );
   header.appendChild(nameEl);
+  header.appendChild(titleEl);
+
+  const contactDiv = createElement(
+    "div",
+    "flex flex-wrap justify-center sm:justify-start space-x-4 text-sm mt-3 text-gray-600"
+  );
+
+  const contactItems = [
+    {
+      text: data.personal.email,
+      href: `mailto:${data.personal.email}`,
+    },
+    {
+      text: "linkedin.com/in/" + data.personal.linkedin,
+      href: `https://linkedin.com/in/${data.personal.linkedin}`,
+      external: true,
+    },
+    {
+      text: "github.com/" + data.personal.github,
+      href: `https://github.com/${data.personal.github}`,
+      external: true,
+    },
+    { text: data.personal.address },
+  ];
+  contactItems.forEach((item) => {
+    const itemEl = createElement(
+      item.href ? "a" : "span",
+      "flex items-center space-x-1 hover:text-blue-700 transition duration-150",
+      `<span>${item.text}</span>`
+    );
+    if (item.href) {
+      itemEl.href = item.href;
+      itemEl.target = item.external ? "_blank" : "_self";
+    }
+    contactDiv.appendChild(itemEl);
+  });
+  header.appendChild(contactDiv);
 
   container.appendChild(header);
 
