@@ -32,6 +32,47 @@ const data = {
       ],
     },
   ],
+  experience: [
+    {
+      title: "Analyste en sécurité de l'information",
+      company: "Valtech",
+      location: "Montréal, Canada",
+      startDate: "09/2021",
+      endDate: "11/2025",
+      description: [
+        "Assumer le rôle d'officier principal de la sécurité de l'information (ISO) pour le Canada et servir de point de contact principal pour toutes les questions liées à la sécurité de l'information",
+        "Conduire des évaluations des risques de sécurité de l'information et élaborer des plans d'atténuation pour minimiser les risques identifiés",
+        "Effectuer des analyses d'impact sur les affaires (BIA) pour identifier les fonctions critiques de l'entreprise et les exigences de continuité des activités",
+        "Effectuer des audits réguliers de sécurité de l'information pour garantir la conformité aux politiques internes et aux exigences réglementaires",
+        "Fournir une formation et une sensibilisation à la sécurité de l'information aux employés pour promouvoir une culture de sécurité au sein de l'organisation",
+        "Mettre en œuvre et gérer des politiques, des normes et des procédures de sécurité de l'information conformes aux cadres réglementaires pertinents",
+        "Opérer les capacités GRC (Governance, Risk, and Compliance) pour soutenir les initiatives de gestion des risques de l'organisation",
+        "Valider la conformité interne et externe aux normes de sécurité telles que PCI DSS, ISO 27001, SOC 2, GDPR, etc.",
+      ],
+    },
+    {
+      title: "Stagiaire en cybersécurité",
+      company: "Centre de Recherche Informatique de Montréal (CRIM)",
+      location: "Montréal, Canada",
+      startDate: "01/2021",
+      endDate: "08/2021",
+      description: [
+        "Développer une plateforme Wiki, basée sur MediaWiki, pour répertorier et évaluer la sécurité et la résilience des systèmes IoT",
+        "Déterminer les attributs pertinents de l'analyseur de trafic Zeek pour proposer de nouveaux Indicators of Compromise (IoC) en liant aux techniques MITRE ATT&CK",
+      ],
+    },
+    {
+      title: "Stagiaire en cybersécurité",
+      company: "Centre de Recherche Informatique de Montréal (CRIM)",
+      location: "Montréal, Canada",
+      startDate: "05/2019",
+      endDate: "03/2020",
+      description: [
+        "Déterminer la qualité du code de logiciels Java open-source en fonction de leur tendance aux fautes et changements",
+        "Développer un balayeur de ports pour prédire la catégorie de la machine cible (serveur, poste de travail, IoT, etc.) en utilisant des données de Shodan",
+      ],
+    },
+  ],
 };
 
 function createElement(tag, classes, content = "") {
@@ -56,6 +97,49 @@ function renderResumeCV() {
   header.appendChild(nameEl);
 
   container.appendChild(header);
+
+  container.appendChild(
+    createElement("h3", "section-title text-lg text-gray-800", "Expérience")
+  );
+
+  data.experience.forEach((exp) => {
+    const expDiv = createElement(
+      "div",
+      "mb-4 pb-2 border-b border-gray-100 last:border-b-0"
+    );
+
+    const firstRow = createElement("div", "flex justify-between items-start");
+    firstRow.appendChild(
+      createElement("h4", "text-base font-semibold text-gray-800", exp.title)
+    );
+    firstRow.appendChild(
+      createElement(
+        "span",
+        "text-sm font-medium text-gray-500",
+        exp.startDate + " - " + exp.endDate
+      )
+    );
+    expDiv.appendChild(firstRow);
+
+    const secondRow = createElement(
+      "div",
+      "flex justify-between items-center text-sm text-gray-600 italic mt-0.5 mb-1"
+    );
+    secondRow.appendChild(createElement("p", "", exp.company));
+    secondRow.appendChild(createElement("p", "text-right", exp.location));
+    expDiv.appendChild(secondRow);
+
+    const descList = createElement(
+      "ul",
+      "list-disc ml-5 text-gray-700 text-sm space-y-1"
+    );
+    exp.description.forEach((point) => {
+      descList.appendChild(createElement("li", "", point));
+    });
+    expDiv.appendChild(descList);
+
+    container.appendChild(expDiv);
+  });
 
   container.appendChild(
     createElement("h3", "section-title text-lg text-gray-800", "Éducation")
