@@ -218,10 +218,7 @@ function renderResumeCV() {
     createElement("h3", "section-title text-lg text-gray-800", "Certifications")
   );
 
-  const certDiv = createElement(
-    "div",
-    "mb-4 pb-2 border-b border-gray-100 last:border-b-0"
-  );
+  const certDiv = createElement("div", "mb-4 pb-2");
 
   const certList = createElement(
     "ul",
@@ -244,10 +241,7 @@ function renderResumeCV() {
   );
 
   data.skills.forEach((skill) => {
-    const skillDiv = createElement(
-      "div",
-      "mb-4 pb-2 border-b border-gray-100 last:border-b-0"
-    );
+    const skillDiv = createElement("div", "mb-4 pb-2");
 
     skillDiv.appendChild(
       createElement("h4", "text-sm font-bold text-blue-700 mb-1", skill.title)
@@ -273,10 +267,7 @@ function renderResumeCV() {
   );
 
   data.experience.forEach((exp) => {
-    const expDiv = createElement(
-      "div",
-      "mb-4 pb-2 border-b border-gray-100 last:border-b-0"
-    );
+    const expDiv = createElement("div", "mb-4 pb-2");
 
     const firstRow = createElement("div", "flex justify-between items-start");
     firstRow.appendChild(
@@ -316,10 +307,7 @@ function renderResumeCV() {
   );
 
   data.education.forEach((edu) => {
-    const eduDiv = createElement(
-      "div",
-      "mb-4 pb-2 border-b border-gray-100 last:border-b-0"
-    );
+    const eduDiv = createElement("div", "mb-4 pb-2");
 
     const firstRow = createElement("div", "flex justify-between items-start");
     firstRow.appendChild(
@@ -358,10 +346,7 @@ function renderResumeCV() {
     createElement("h3", "section-title text-lg text-gray-800", "Publications")
   );
 
-  const pubDiv = createElement(
-    "div",
-    "mb-4 pb-2 border-b border-gray-100 last:border-b-0"
-  );
+  const pubDiv = createElement("div", "mb-4 pb-2");
 
   const row = createElement(
     "ul",
