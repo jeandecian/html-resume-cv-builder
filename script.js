@@ -106,6 +106,39 @@ const data = {
       date: "2021",
     },
   ],
+  skills: [
+    {
+      title: "Langues",
+      topics: ["Français", "Anglais (C1)"],
+    },
+    {
+      title: "Gestion des risques d'entreprise",
+      topics: [
+        "Analyse d'impact sur les affaires",
+        "Analyse de risque",
+        "Audit interne",
+        "Gestion des risques",
+        "Planification de la continuité des affaires",
+      ],
+    },
+    {
+      title: "Gouvernance",
+      topics: ["Politiques de sécurité", "Conformité réglementaire"],
+    },
+    {
+      title: "Normes et cadres de cybersécurité",
+      topics: [
+        "ISO 27001",
+        "OWASP Top 10",
+        "NIST Cybersecurity Framework",
+        "PCI DSS",
+      ],
+    },
+    {
+      title: "Opérations de sécurité",
+      topics: ["Gestion des vulnerabilités", "Réponse aux incidents"],
+    },
+  ],
 };
 
 function createElement(tag, classes, content = "") {
@@ -155,6 +188,35 @@ function renderResumeCV() {
   certDiv.appendChild(certList);
 
   container.appendChild(certDiv);
+
+  container.appendChild(
+    createElement("h3", "section-title text-lg text-gray-800", "Compétences")
+  );
+
+  data.skills.forEach((skill) => {
+    const skillDiv = createElement(
+      "div",
+      "mb-4 pb-2 border-b border-gray-100 last:border-b-0"
+    );
+
+    skillDiv.appendChild(
+      createElement("h4", "text-sm font-bold text-blue-700 mb-1", skill.title)
+    );
+
+    const topicsDiv = createElement("div", "flex flex-wrap gap-2");
+    skill.topics.forEach((topic) => {
+      topicsDiv.appendChild(
+        createElement(
+          "span",
+          "text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full border border-gray-200 shadow-sm hover:bg-gray-200 transition",
+          topic
+        )
+      );
+    });
+    skillDiv.appendChild(topicsDiv);
+
+    container.appendChild(skillDiv);
+  });
 
   container.appendChild(
     createElement("h3", "section-title text-lg text-gray-800", "Expérience")
