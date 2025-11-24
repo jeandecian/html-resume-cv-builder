@@ -73,6 +73,22 @@ const data = {
       ],
     },
   ],
+  publications: [
+    {
+      title:
+        "Estimating the Carbon Footprint of Cyberattacks: The Ransomware Case",
+      date: "2025",
+    },
+    {
+      title:
+        "Wiki-IoT: Registering and Evaluating the Security and Resilience of Internet of Things and Connected Devices Using a Collaborative Platform",
+      date: "2024",
+    },
+    {
+      title: "Social Network Cyberattacks and Security Issues",
+      date: "2021",
+    },
+  ],
 };
 
 function createElement(tag, classes, content = "") {
@@ -183,6 +199,27 @@ function renderResumeCV() {
 
     container.appendChild(eduDiv);
   });
+
+  container.appendChild(
+    createElement("h3", "section-title text-lg text-gray-800", "Publications")
+  );
+
+  const pubDiv = createElement(
+    "div",
+    "mb-4 pb-2 border-b border-gray-100 last:border-b-0"
+  );
+
+  const row = createElement(
+    "ul",
+    "list-disc ml-5 text-gray-700 text-sm space-y-1"
+  );
+  data.publications.forEach((pub) => {
+    const pubItem = createElement("li", "", `${pub.title} (${pub.date})`);
+    row.appendChild(pubItem);
+  });
+  pubDiv.appendChild(row);
+
+  container.appendChild(pubDiv);
 }
 
 document.addEventListener("DOMContentLoaded", renderResumeCV);
