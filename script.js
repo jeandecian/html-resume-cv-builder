@@ -240,27 +240,23 @@ function renderResumeCV() {
     createElement("h3", "section-title text-lg text-gray-800", "Compétences")
   );
 
+  const skillDiv = createElement("div", "mb-4 pb-2");
+
+  const skillList = createElement(
+    "ul",
+    "list-disc ml-5 text-gray-700 text-sm space-y-1"
+  );
   data.skills.forEach((skill) => {
-    const skillDiv = createElement("div", "mb-4 pb-2");
-
-    skillDiv.appendChild(
-      createElement("h4", "text-sm font-bold text-blue-700 mb-1", skill.title)
+    const skillItem = createElement(
+      "li",
+      "",
+      `<strong>${skill.title}:</strong> ${skill.topics.join(", ")}`
     );
-
-    const topicsDiv = createElement("div", "flex flex-wrap gap-2");
-    skill.topics.forEach((topic) => {
-      topicsDiv.appendChild(
-        createElement(
-          "span",
-          "text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full border border-gray-200 shadow-sm hover:bg-gray-200 transition",
-          topic
-        )
-      );
-    });
-    skillDiv.appendChild(topicsDiv);
-
-    container.appendChild(skillDiv);
+    skillList.appendChild(skillItem);
   });
+  skillDiv.appendChild(skillList);
+
+  container.appendChild(skillDiv);
 
   container.appendChild(
     createElement("h3", "section-title text-lg text-gray-800", "Expérience")
