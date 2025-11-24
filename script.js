@@ -1,5 +1,22 @@
 const data = {
   personal: { name: "Jean Decian" },
+  certifications: [
+    {
+      name: "Practical Network Penetration Tester (PNPT)",
+      issuer: "TCM Security",
+      date: "en cours",
+    },
+    {
+      name: "CompTIA Security+",
+      issuer: "CompTIA",
+      date: "2023",
+    },
+    {
+      name: "PCI Professional",
+      issuer: "PCI Security Standards Council",
+      date: "2023",
+    },
+  ],
   education: [
     {
       degree: "Maîtrise en informatique",
@@ -113,6 +130,31 @@ function renderResumeCV() {
   header.appendChild(nameEl);
 
   container.appendChild(header);
+
+  container.appendChild(
+    createElement("h3", "section-title text-lg text-gray-800", "Certifications")
+  );
+
+  const certDiv = createElement(
+    "div",
+    "mb-4 pb-2 border-b border-gray-100 last:border-b-0"
+  );
+
+  const certList = createElement(
+    "ul",
+    "list-disc ml-5 text-gray-700 text-sm space-y-1"
+  );
+  data.certifications.forEach((cert) => {
+    const certItem = createElement(
+      "li",
+      "",
+      `${cert.name} - ${cert.issuer} (${cert.date})`
+    );
+    certList.appendChild(certItem);
+  });
+  certDiv.appendChild(certList);
+
+  container.appendChild(certDiv);
 
   container.appendChild(
     createElement("h3", "section-title text-lg text-gray-800", "Expérience")
